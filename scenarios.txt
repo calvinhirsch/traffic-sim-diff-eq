@@ -1,0 +1,24 @@
+A=1, B=1 with different spacing
+Negative starting speed
+2 cars vs 20 (with different spacing)
+
+Phantom Traffic Jam:
+Cars: 12
+TS: 4.66
+SSpa: 0.33
+SSpe: 0.2
+A/B: 0.9/0.1
+
+Strange Broken Behavior (Negative):
+Cars: 12
+TS: -1
+SSpa: 0.2
+SSpe: 0.2
+A/B: 0.9/0.1
+
+Slowed-Down Broken Behavior:
+Cars: 12
+TS: -0.1
+SSpa: 0.33
+SSPe: -1
+A/B: 0.9/0.1

@@ -1,0 +1,92 @@
+<html>
+<head>
+	<title>Traffic Simulation</title>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css" />
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+			tex2jax: { inlineMath: [ ["$", "$"], ["\\\\(","\\\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
+			TeX: {
+				extensions: ["begingroup.js"],
+				noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+				Macros: { href: "{}" } 
+			},
+			messageStyle: "none",
+			
+			styles: { ".MathJax_Display, .MathJax_Preview, .MathJax_Preview > *": { "background": "inherit" } },
+			SEEditor: "mathjaxEditing"
+	});
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full"></script>
+	
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="row">
+		<p style="display: block; width: 100%; text-align: center;">
+			<br>
+			<b>Formula for acceleration of jth car (rad/s^2)</b>
+			<br>
+			$ a_j = $
+			<span id="alpha">0.5</span>
+			$ \frac{v_{j+1} - v_j}{x_{j+1}-x_j} + $
+			<span id="beta">0.5</span>
+			$ ( $
+			<span id="velocity">1</span>
+			$ (x_{j+1} - x_j) - v_j) $
+		</p>
+	</div>
+	<div class="row" style="margin-top: -20px; padding-top: 0;">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+			<div style="height: 18px;"></div>
+			<span class="input"><font face="Symbol">a</font>: <span id="inalpha">0.5</span></span>
+			<input type="range" min="0" max="10" value="5" id="slider" style="">
+			<span class="input"><font face="Symbol">b</font>: <span id="inbeta">0.5</span></span>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+	<div class="row" style="margin-top: 15px">
+		<div class="col-sm"></div>
+		<div class="col-sm">
+			<span>Target Speed</span>
+			<input id="invelocity" type="text" style="width: 100%;" value="1" />
+		</div>
+		<div class="col-sm">
+			<span>Max Speed</span>
+			<input id="inmaxvel" type="text" style="width: 100%;" value="10000" />
+		</div>
+		<div class="col-sm">
+			<span>Number of Cars</span>
+			<input id="cars" type="text" style="width: 100%;" value="5" />
+		</div>
+		<div class="col-sm"></div>
+	</div>
+	<div class="row" style="margin-top: 5px">
+		<div class="col-sm"></div>
+		<div class="col-sm">
+			<span>Start Spacing</span>
+			<input id="inspacing" type="text" style="width: 100%;" value="1.2566" />
+		</div>
+		<div class="col-sm">
+			<span>Random Spacing Offset</span>
+			<input id="inrandspacing" type="text" style="width: 100%;" value="0" />
+		</div>
+		<div class="col-sm">
+			<span>Start Speed</span>
+			<input id="instartvel" type="text" style="width: 100%;" value="1" />
+		</div>
+		<div class="col-sm"></div>
+	</div>
+	<div class="row">
+		<button class="btn btn-primary" onclick="initSim()" style="display: block; margin: auto; margin-top: 20px;">Restart</button>
+	</div>
+	
+	<canvas id="canv" style="margin-top: 20px;"></canvas>
+	<script src="script.js"></script>
+</body>
+</html>
